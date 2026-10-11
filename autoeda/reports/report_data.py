@@ -17,6 +17,12 @@ if TYPE_CHECKING:
     from autoeda.core.nulls import MissingResult
     from autoeda.core.correlation import CorrelationResult
     from autoeda.core.outliers import OutlierResult
+    from autoeda.core.pca import PCAResult
+    from autoeda.core.distribution import DistributionReport
+    from autoeda.core.collinearity import MulticollinearityReport
+    from autoeda.core.timeseries import TimeSeriesProfile
+    from autoeda.core.normalization import NormalizationResult
+    from autoeda.core.transformation import TransformationSummary
 
 
 @dataclass
@@ -32,6 +38,12 @@ class ReportData:
     correlation: Optional["CorrelationResult"] = None
     outliers: Optional["OutlierResult"] = None
     categorical: Optional["CategoricalResult"] = None
+    pca: Optional["PCAResult"] = None
+    distributions: Optional["DistributionReport"] = None
+    collinearity: Optional["MulticollinearityReport"] = None
+    timeseries: Optional["TimeSeriesProfile"] = None
+    normalization: Optional["NormalizationResult"] = None
+    transformations: Optional["TransformationSummary"] = None
 
     # TODO: Add an autoeda_version field (imported from autoeda.__version__).
     # TODO: Add a metadata dict for any arbitrary key-value pairs contributors

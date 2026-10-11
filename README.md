@@ -207,6 +207,13 @@ All commands are implemented as composable [Click](https://click.palletsprojects
 | `autoeda correlate <file>`| Calculate correlation matrix with terminal heatmaps | `--method pearson\|spearman`, `--min 0.5` |
 | `autoeda outliers <file>` | Detect outliers using IQR or Z-score methods | `--method iqr\|zscore`, `--col <name>` |
 | `autoeda cat <file>` | Distribution & frequency tables for categorical fields | `--top <n>`, `--cardinality` |
+| `autoeda normalize <file>`| Scale numerical features (Min-Max, Standard Z-score, Robust, MaxAbs) | `--method standard\|minmax\|robust`, `-o <path>` |
+| `autoeda transform <file>`| Transform features (Log, Box-Cox, Yeo-Johnson, Sqrt, Binning) | `--method log\|boxcox\|bin`, `--bins 5` |
+| `autoeda pca <file>` | Principal Component Analysis, scree plot, loadings, projections | `--n-components 3`, `--scree`, `-o <path>` |
+| `autoeda dist <file>` | Distribution profiling & normality tests (Shapiro-Wilk, K-S, Q-Q plot) | `--test shapiro\|ks\|all`, `--qq` |
+| `autoeda vif <file>` | Multicollinearity diagnostics via Variance Inflation Factor (VIF) | `--threshold 5.0`, `--corr-threshold 0.8` |
+| `autoeda time <file>` | Time series profiling (sampling cadence, gaps, ACF autocorrelation) | `--date-col timestamp`, `--lags 20` |
+| `autoeda clean <group>` | Data cleaning suite (fill, drop, dedup, cast, rename, clip, encode) | `autoeda clean fill -s mean -o out.csv` |
 | `autoeda report <file>` | Generate an exportable interactive or static report | `--format html\|md\|json`, `-o <path>` |
 
 ---

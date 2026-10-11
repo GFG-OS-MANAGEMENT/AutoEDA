@@ -10,7 +10,22 @@ It is referenced by the `autoeda` console_script entry-point in pyproject.toml.
 
 import click
 
-from autoeda.cli import overview, stats, missing, correlate, outliers, cat, report
+from autoeda.cli import (
+    cat,
+    correlate,
+    dist,
+    missing,
+    normalize,
+    outliers,
+    overview,
+    pca,
+    report,
+    stats,
+    timeseries,
+    transform,
+    vif,
+)
+from autoeda.cli.clean import clean
 
 
 # TODO: Add global Click options that apply to every subcommand, such as:
@@ -30,10 +45,16 @@ def cli() -> None:
 
     \b
     Examples:
-      autoeda overview data.csv
-      autoeda stats   data.csv --columns age,salary
-      autoeda missing data.csv --threshold 5.0
-      autoeda report  data.csv --format html -o report.html
+      autoeda overview  data.csv
+      autoeda stats     data.csv --columns age,salary
+      autoeda pca       data.csv --n-components 2
+      autoeda normalize data.csv --method standard -o scaled.csv
+      autoeda transform data.csv --method log -o log_transformed.csv
+      autoeda dist      data.csv --test shapiro
+      autoeda vif       data.csv --threshold 5.0
+      autoeda time      data.csv --date-col timestamp
+      autoeda clean     fill data.csv --strategy mean -o cleaned.csv
+      autoeda report    data.csv --format html -o report.html
     """
     # TODO: Initialise any global state here (e.g., color theme, log level).
     pass
@@ -46,6 +67,13 @@ cli.add_command(missing.missing)
 cli.add_command(correlate.correlate)
 cli.add_command(outliers.outliers)
 cli.add_command(cat.cat)
+cli.add_command(normalize.normalize)
+cli.add_command(transform.transform)
+cli.add_command(pca.pca)
+cli.add_command(dist.dist)
+cli.add_command(vif.vif)
+cli.add_command(timeseries.time_cmd)
+cli.add_command(clean)
 cli.add_command(report.report)
 
 
