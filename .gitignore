@@ -1,0 +1,46 @@
+# AutoEDA — Python virtual environment
+venv/
+.venv/
+env/
+
+# Byte-compiled / optimised Python files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+*.whl
+MANIFEST
+
+# Pytest & coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+*.lcov
+
+# Type checking
+.mypy_cache/
+.ruff_cache/
+
+# IDE / editor artifacts
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# AutoEDA generated reports (don't commit example outputs)
+autoeda_report.html
+autoeda_report.md
+autoeda_report.json

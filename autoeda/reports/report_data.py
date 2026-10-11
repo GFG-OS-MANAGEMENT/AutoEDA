@@ -1,0 +1,38 @@
+"""
+autoeda/reports/report_data.py
+-------------------------------
+Aggregated report data container.
+
+This dataclass bundles all individual analysis results into a single object
+that is passed to report exporters (HTML, Markdown, JSON).
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from typing import Optional, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from autoeda.core.summary import OverviewResult, StatsResult, CategoricalResult
+    from autoeda.core.nulls import MissingResult
+    from autoeda.core.correlation import CorrelationResult
+    from autoeda.core.outliers import OutlierResult
+
+
+@dataclass
+class ReportData:
+    """Container that bundles all EDA results for report export."""
+
+    filepath: str
+    generated_at: str               # ISO 8601 timestamp string
+
+    overview: Optional["OverviewResult"] = None
+    stats: Optional["StatsResult"] = None
+    missing: Optional["MissingResult"] = None
+    correlation: Optional["CorrelationResult"] = None
+    outliers: Optional["OutlierResult"] = None
+    categorical: Optional["CategoricalResult"] = None
+
+    # TODO: Add an autoeda_version field (imported from autoeda.__version__).
+    # TODO: Add a metadata dict for any arbitrary key-value pairs contributors
+    #       may want to include in the report (e.g. dataset description, author).
