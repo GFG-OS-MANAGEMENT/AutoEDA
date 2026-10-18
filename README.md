@@ -10,6 +10,7 @@
 > Powered by Python & [Click](https://click.palletsprojects.com/). Zero boilerplate. Zero notebooks. No need to write Pandas scripts just to inspect your data.
 
 ---
+This is for git workshop
 
 ## 📌 Table of Contents
 
