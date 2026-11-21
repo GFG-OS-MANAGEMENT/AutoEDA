@@ -66,7 +66,5 @@ def test_load_csv_missing_values(sample_csv: str) -> None:
 
 def test_load_file_not_found() -> None:
     """load_file() should raise FileNotFoundError for missing files."""
-    # TODO: Uncomment once the FileNotFoundError check is implemented in load_file().
-    # with pytest.raises(FileNotFoundError):
-    #     load_file("/nonexistent/path/data.csv")
-    pytest.skip("Not yet implemented — remove skip when FileNotFoundError check is added.")
+    with pytest.raises(FileNotFoundError):
+        load_file("/nonexistent/path/data.csv")

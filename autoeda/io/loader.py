@@ -153,7 +153,8 @@ def load_file(filepath: str) -> DataResult:
     ValueError
         If the file extension is not supported.
     """
-    # TODO: Verify the file exists; raise FileNotFoundError if not.
+    if not os.path.exists(filepath):
+        raise FileNotFoundError(f"File not found: '{filepath}'")
 
     file_format = detect_format(filepath)
 
