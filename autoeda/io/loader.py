@@ -55,29 +55,29 @@ class DataResult:
     @property
     def row_count(self) -> int:
         """Return the number of rows in the dataset."""
-        # TODO: Return len(self.columns[0].values) if columns exist, else 0.
-        raise NotImplementedError("row_count is not yet implemented.")
+        if not self.columns:
+            return 0
+        return len(self.columns[0].values)
 
     @property
     def column_names(self) -> List[str]:
         """Return an ordered list of all column names."""
-        # TODO: Return [c.name for c in self.columns].
-        raise NotImplementedError("column_names is not yet implemented.")
+        return [c.name for c in self.columns]
 
     def get_column(self, name: str) -> ColumnData:
         """Retrieve a ColumnData by name, raising KeyError if not found."""
-        # TODO: Search self.columns for a matching name and return it.
-        raise NotImplementedError("get_column() is not yet implemented.")
+        for column in self.columns:
+            if column.name == name:
+                return column
+        raise KeyError(name)
 
     def numerical_columns(self) -> List[ColumnData]:
         """Return only columns with dtype 'integer' or 'float'."""
-        # TODO: Filter self.columns by inferred_dtype in {"integer", "float"}.
-        raise NotImplementedError("numerical_columns() is not yet implemented.")
+        return [c for c in self.columns if c.inferred_dtype in {"integer", "float"}]
 
     def categorical_columns(self) -> List[ColumnData]:
         """Return only columns with dtype 'string'."""
-        # TODO: Filter self.columns by inferred_dtype == "string".
-        raise NotImplementedError("categorical_columns() is not yet implemented.")
+        return [c for c in self.columns if c.inferred_dtype == "string"]
 
 
 # ---------------------------------------------------------------------------
